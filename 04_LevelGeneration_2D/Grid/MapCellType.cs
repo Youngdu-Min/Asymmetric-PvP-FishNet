@@ -1,0 +1,1 @@
+public enum MapCellType { None, Room, Corridor }
