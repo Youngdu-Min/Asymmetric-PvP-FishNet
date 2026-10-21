@@ -563,9 +563,11 @@ stateDiagram-v2
 - **해제 지연**: 감지는 즉시, 해제는 0.5초 뒤에 합니다. 경계에서 들락날락할 때 HUD가 깜빡이는 것을 막습니다.
 - **변경 시에만 전송**: 상태가 바뀔 때만 RPC를 보냅니다.
 
-> 📷 **[S10]** Scene 뷰 — 근접 감지 반경 기즈모
+> 📷 **[S10]** 근접 감지 — 반경 안에 생존자가 들어오면 괴물 HUD에 눈 아이콘이 켜짐(위), Scene 뷰 감지 반경 기즈모(아래)
 >
-> ![S10](images/S10_proximity_hud_range.png)
+> ![S10 HUD](images/S10_proximity_hud.png)
+>
+> ![S10 Range](images/S10_proximity_hud_range.png)
 
 ### 6.3 HUD 연결 (Provider / Adapter / Widget)
 
