@@ -161,11 +161,9 @@ var path = pathfinder.FindPath(start, end, (a, b) => EvaluateCost(b, end, grid, 
 
 **폭 확장** (`CorridorWidthExpander`): A\*가 만든 1칸 중심선을 진행 방향의 수직으로 넓혀 통로 폭(기본 3칸)을 만듭니다. 이미 방인 칸은 덮어쓰지 않고, 빈 칸만 통로로 표시합니다.
 
-<!-- 스크린샷 추가 예정
 > 📷 **[S01]** 1~4단계 기즈모 — 방(빨강), MST 간선(흰색), 추가 간선(노랑), 통로 칸(청록)
 >
 > ![S01](images/S01_pipeline_gizmo.png)
--->
 
 ### 3.5 선택 통로
 
@@ -201,11 +199,9 @@ return ComputeBranchDepth(owner, ..., currentDepth + 1, visited);
 
 제거할 때는 **그 막다른 길만 소유한 칸**만 비웁니다(`UnstampExclusiveCells`). 다른 통로와 겹친 칸을 지워 맵이 끊기는 일을 막습니다. 제거된 항목마다 사유 문자열을 남겨 튜닝할 때 근거로 씁니다.
 
-<!-- 스크린샷 추가 예정
-> 📷 **[S02]** 막다른 길 정리 기즈모 — 남긴 막다른 길(초록), 제거한 막다른 길(빨강)
+> 📷 **[S02]** 막다른 길 정리 기즈모 — 남긴 막다른 길(초록)
 >
 > ![S02](images/S02_deadend_cleanup.png)
--->
 
 ### 3.7 시작/목표 배치
 
@@ -245,11 +241,9 @@ flowchart LR
 5. 방 내부에 소품을 배치합니다. 목표 오브젝트가 차지한 칸은 피하고, 소품 사이 최소 거리를 둡니다.
 6. 모든 타일맵을 갱신하고 **NavMesh를 다시 굽습니다**(NavMeshPlus). 생존자 추적 경로가 이 NavMesh를 씁니다.
 
-<!-- 스크린샷 추가 예정
-> 📷 **[S03]** 베이크된 맵 전체 탑뷰 (가능하면 시드 2~3개 비교)
+> 📷 **[S03]** 베이크된 맵 전체 탑뷰 — 시드 3개 비교
 >
 > ![S03](images/S03_baked_map.png)
--->
 
 ### 3.10 네트워크 동기화와 생성 이벤트
 
@@ -271,17 +265,13 @@ sequenceDiagram
 - 그리드·방 목록 같은 큰 데이터는 전송하지 않습니다.
 - `m_hasGenerated` 플래그로 호스트(서버 + 클라이언트)에서 두 번 생성하지 않게 합니다.
 
-<!-- 스크린샷 추가 예정
 > 📷 **[S04]** Console — `[MasterRunner] Attempt n/10 with Seed` 재시도와 최종 성공 로그
 >
 > ![S04](images/S04_retry_log.png)
--->
 
-<!-- 스크린샷 추가 예정
 > 📷 **[S05]** MapGenerationMasterRunner 인스펙터 — 시드 설정과 단계별 러너 연결
 >
 > ![S05](images/S05_master_runner.png)
--->
 
 **초기화 순서와 무관하게 맵 결과를 받는 구조**
 
