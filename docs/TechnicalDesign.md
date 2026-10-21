@@ -161,9 +161,11 @@ var path = pathfinder.FindPath(start, end, (a, b) => EvaluateCost(b, end, grid, 
 
 **폭 확장** (`CorridorWidthExpander`): A\*가 만든 1칸 중심선을 진행 방향의 수직으로 넓혀 통로 폭(기본 3칸)을 만듭니다. 이미 방인 칸은 덮어쓰지 않고, 빈 칸만 통로로 표시합니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S01]** 1~4단계 기즈모 — 방(빨강), MST 간선(흰색), 추가 간선(노랑), 통로 칸(청록)
 >
 > ![S01](images/S01_pipeline_gizmo.png)
+-->
 
 ### 3.5 선택 통로
 
@@ -199,9 +201,11 @@ return ComputeBranchDepth(owner, ..., currentDepth + 1, visited);
 
 제거할 때는 **그 막다른 길만 소유한 칸**만 비웁니다(`UnstampExclusiveCells`). 다른 통로와 겹친 칸을 지워 맵이 끊기는 일을 막습니다. 제거된 항목마다 사유 문자열을 남겨 튜닝할 때 근거로 씁니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S02]** 막다른 길 정리 기즈모 — 남긴 막다른 길(초록), 제거한 막다른 길(빨강)
 >
 > ![S02](images/S02_deadend_cleanup.png)
+-->
 
 ### 3.7 시작/목표 배치
 
@@ -241,9 +245,11 @@ flowchart LR
 5. 방 내부에 소품을 배치합니다. 목표 오브젝트가 차지한 칸은 피하고, 소품 사이 최소 거리를 둡니다.
 6. 모든 타일맵을 갱신하고 **NavMesh를 다시 굽습니다**(NavMeshPlus). 생존자 추적 경로가 이 NavMesh를 씁니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S03]** 베이크된 맵 전체 탑뷰 (가능하면 시드 2~3개 비교)
 >
 > ![S03](images/S03_baked_map.png)
+-->
 
 ### 3.10 네트워크 동기화와 생성 이벤트
 
@@ -265,13 +271,17 @@ sequenceDiagram
 - 그리드·방 목록 같은 큰 데이터는 전송하지 않습니다.
 - `m_hasGenerated` 플래그로 호스트(서버 + 클라이언트)에서 두 번 생성하지 않게 합니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S04]** Console — `[MasterRunner] Attempt n/10 with Seed` 재시도와 최종 성공 로그
 >
 > ![S04](images/S04_retry_log.png)
+-->
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S05]** MapGenerationMasterRunner 인스펙터 — 시드 설정과 단계별 러너 연결
 >
 > ![S05](images/S05_master_runner.png)
+-->
 
 **초기화 순서와 무관하게 맵 결과를 받는 구조**
 
@@ -353,9 +363,11 @@ public float CurrentProgress
 
 진행도가 0에서 0으로 "변경"되면 `OnChange`가 오지 않아 기준 시각이 낡은 채로 남습니다. 그래서 **점유자가 바뀔 때도 기준점을 다시 잡습니다.**
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S06]** 생존자가 상자와 상호작용하는 중 — 진행 바와 안내 문구
 >
 > ![S06](images/S06_interaction_progress.png)
+-->
 
 ### 4.3 잠긴 상호작용 (`LockedInteractable`)
 
@@ -487,9 +499,11 @@ private void OnOwnerDirChanged(DirectionResolver.EightDir dir)
 }
 ```
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S07]** Scene 뷰 — Worm 돌진 판정 Box 기즈모가 바라보는 방향으로 회전된 모습
 >
 > ![S07](images/S07_dash_hitbox.png)
+-->
 
 ### 5.5 피격 · 무력화 · 부활
 
@@ -503,9 +517,11 @@ private void OnOwnerDirChanged(DirectionResolver.EightDir dir)
 
 Odin `BoxGroup`으로 부활 / 탄환 피격 감속 / 접촉 피해 / 돌진(피해·이동·타이밍) / 감지 및 추적을 묶었습니다. 디버깅용 `MonsterStatOverride`를 켜면 설정 SO를 건드리지 않고 런타임에 돌진·피해 수치를 바꿀 수 있습니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S08]** MonsterConfig 인스펙터 — BoxGroup으로 묶인 수치
 >
 > ![S08](images/S08_monster_config.png)
+-->
 
 ---
 
@@ -542,9 +558,11 @@ sequenceDiagram
 - LineRenderer는 최대 추적 수만큼 미리 만들어 재사용합니다.
 - 갱신 사이에 알파를 줄여 **맥박처럼 깜빡이는** 연출을 넣었습니다. 알파는 `MaterialPropertyBlock`으로 바꿔 머티리얼 인스턴스를 만들지 않습니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S09]** 괴물 화면 — 상호작용 중인 생존자까지 경로 라인이 표시된 모습
 >
 > ![S09](images/S09_path_reveal.png)
+-->
 
 ### 6.2 근접 감지 (`EntityProximitySensor`)
 
@@ -563,9 +581,11 @@ stateDiagram-v2
 - **해제 지연**: 감지는 즉시, 해제는 0.5초 뒤에 합니다. 경계에서 들락날락할 때 HUD가 깜빡이는 것을 막습니다.
 - **변경 시에만 전송**: 상태가 바뀔 때만 RPC를 보냅니다.
 
+<!-- 스크린샷 추가 예정
 > 📷 **[S10]** 근접 감지 HUD 위젯이 켜진 화면 (가능하면 Scene 뷰 감지 반경 기즈모 함께)
 >
 > ![S10](images/S10_proximity_hud.png)
+-->
 
 ### 6.3 HUD 연결 (Provider / Adapter / Widget)
 
