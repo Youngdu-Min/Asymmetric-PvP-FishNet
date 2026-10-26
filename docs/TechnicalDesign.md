@@ -518,8 +518,8 @@ Odin `BoxGroup`으로 부활 / 탄환 피격 감속 / 접촉 피해 / 돌진(피
 ```mermaid
 sequenceDiagram
     participant L as LockedInteractable (서버)
-    participant T as PathRevealController (서버)
-    participant R as PathRenderer (괴물 클라이언트)
+    participant T as EntityPathRevealController (서버)
+    participant R as EntityPathRenderer (괴물 클라이언트)
 
     L->>T: StartTracking(survivor)
     T->>T: 추적 목록에 추가 (지속 4초, 최대 3명)
